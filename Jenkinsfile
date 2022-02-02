@@ -1,16 +1,16 @@
 def remote = [:]
-remote.name = "node-1"
-remote.host = "10.000.000.153"
+remote.name = "artifactory-server"
+remote.host = "64.225.51.239"
 remote.allowAnyHosts = true
 
 node {
-    withCredentials([sshUserPrivateKey(credentialsId: 'sshUser', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
+    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-steps-deploy', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
             writeFile file: 'abc.sh', text: 'ls'
-            sshCommand remote: remote, command: ''
-            sshScript remote: remote, script: 'abc.sh'
+            sshCommand remote: remote, command: 'touch issam.txt'
+            //sshScript remote: remote, script: 'abc.sh'
             
         }
     }
