@@ -5,6 +5,10 @@ remote.allowAnyHosts = true
 //def DIR = "gaston"
 //def VERSION = "1.7.15"
 node {
+    environment {
+        CI = true
+        ARTIFACTORY_TOKEN = credentials('artifactory-access-token')
+    }
     stage ('checkout') {
         git branch: 'main',
     url: 'https://github.com/imejri/ssh-steps.git'
@@ -13,7 +17,6 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            withCredentials([string(credentialsId: 'artifactory-access-token', variable: 'ARTIFACTORY_TOKEN')]) {
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
@@ -21,8 +24,6 @@ node {
             //sshCommand remote: remote, command: 'chmod +x variable.sh'
              sshCommand remote: remote, command: "./variable.sh ${ARTIFACTORY_TOKEN}"
             //sshScript remote: remote, script: 'variable.sh'
-            
-            }//withcredentials
             
         }//withcredentials
     }//stage
