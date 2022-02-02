@@ -13,7 +13,7 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            def ARTIFACTORY_TOKEN = credentials('artifactory-access-token')
+            ARTIFACTORY_TOKEN = credentials('artifactory-access-token')
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
