@@ -8,8 +8,8 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            writeFile file: 'abc.sh', text: 'ls'
-            sshCommand remote: remote, command: 'touch issam.txt'
+            //writeFile file: 'abc.sh', text: 'ls'
+            sshCommand remote: remote, command: 'touch issam1.txt'
             //sshScript remote: remote, script: 'abc.sh'
             
         }
