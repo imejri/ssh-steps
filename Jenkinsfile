@@ -5,6 +5,10 @@ remote.allowAnyHosts = true
 def DIR = "gaston"
 def VERSION = "1.7.15"
 node {
+    stage ('checkout') {
+        git branch: 'master',
+    url: 'https://github.com/imejri/ssh-steps.git'
+    }
     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-steps-deploy', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
         remote.identityFile = identity
