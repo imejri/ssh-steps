@@ -1,2 +1,3 @@
 #!/bin/sh
-mkdir '${env.DIR}'
+DIR=gaston
+mkdir '$DIR'
