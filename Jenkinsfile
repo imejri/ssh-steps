@@ -2,7 +2,7 @@ def remote = [:]
 remote.name = "artifactory-server"
 remote.host = "64.225.51.239"
 remote.allowAnyHosts = true
-
+def DIR = "gaston"
 node {
     def DIR="gaston"
     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-steps-deploy', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
