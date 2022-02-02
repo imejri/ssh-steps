@@ -3,6 +3,7 @@ remote.name = "artifactory-server"
 remote.host = "64.225.51.239"
 remote.allowAnyHosts = true
 def DIR = "gaston"
+def VERSION = "1.7.15"
 node {
     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-steps-deploy', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
         remote.user = userName
@@ -10,6 +11,7 @@ node {
         stage("SSH Steps Rocks!") {
             //writeFile file: 'abc.sh', text: 'ls'
             sshCommand remote: remote, command: "mkdir ${DIR}"
+            sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             //sshScript remote: remote, script: 'abc.sh'
             
         }
