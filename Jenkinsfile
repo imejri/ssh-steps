@@ -17,9 +17,9 @@ node {
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
-            //sshPut remote: remote, from: 'variable.sh', into: '.'
-            //sshCommand remote: remote, command: 'chmod +x variable.sh'
-             sshCommand remote: remote, command: "./variable.sh ${USERNAME} ${PASSWORD}"
+            sshPut remote: remote, from: 'variable.sh', into: '.'
+            sshCommand remote: remote, command: 'chmod +x variable.sh'
+            sshCommand remote: remote, command: "./variable.sh ${USERNAME} ${PASSWORD}"
             //sshScript remote: remote, script: 'variable.sh'
             }
             
