@@ -1,2 +1,2 @@
 #!/bin/sh
-mkdir "${DIR}-${VERSION}"
+mkdir "${DIR}"-"${VERSION}"
