@@ -12,7 +12,7 @@ node {
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
-            sshScript remote: remote, script: "variable.sh"
+            sshScript remote: remote, script: 'variable.sh'
             
         }
     }
