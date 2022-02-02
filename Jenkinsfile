@@ -13,17 +13,17 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            environment {
-                DIR = "gaston"
-                VERSION = "1.7.15"
-            }
+            withCredentials([usernamePassword(credentialsId: 'deploy-cred', passwordVariable: 'ARTIFACTORY_KEY', usernameVariable: 'user')]) {
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             sshPut remote: remote, from: 'variable.sh', into: '.'
             sshCommand remote: remote, command: 'chmod +x variable.sh'
+            sshCommand remote: remote, command: './variable.sh ${ARTIFACTORY_KEY}'
             //sshScript remote: remote, script: 'variable.sh'
             
-        }
-    }
-}
+            }//withcredentials
+            
+        }//withcredentials
+    }//stage
+}//node
