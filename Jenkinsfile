@@ -10,7 +10,7 @@ node {
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
             //writeFile file: 'abc.sh', text: 'ls'
-            sshCommand remote: remote, command: "mkdir ${DIR}"
+            sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             //sshScript remote: remote, script: 'abc.sh'
             
