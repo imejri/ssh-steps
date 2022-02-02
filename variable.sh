@@ -1,2 +1,2 @@
 #!/bin/sh
-mkdir $JOB_NAME
+mkdir '$JOB_NAME'
