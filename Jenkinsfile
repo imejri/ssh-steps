@@ -22,7 +22,7 @@ node {
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             //sshPut remote: remote, from: 'variable.sh', into: '.'
             //sshCommand remote: remote, command: 'chmod +x variable.sh'
-             sshCommand remote: remote, command: "./variable.sh ${ARTIFACTORY_TOKEN}"
+             sshCommand remote: remote, command: "./variable.sh ${env.ARTIFACTORY_TOKEN}"
             //sshScript remote: remote, script: 'variable.sh'
             
         }//withcredentials
