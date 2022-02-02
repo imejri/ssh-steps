@@ -13,13 +13,13 @@ node {
         remote.user = userName
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
-            withCredentials([string(credentialsId: 'artifactory-access-token', variable: 'ARTIFACTORY_TOKEN')]) {
+            withCredentials([usernamePassword(credentialsId: 'artifact-jenkins', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]){
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             //sshPut remote: remote, from: 'variable.sh', into: '.'
             //sshCommand remote: remote, command: 'chmod +x variable.sh'
-             sshCommand remote: remote, command: "./variable.sh ${ARTIFACTORY_TOKEN}"
+             sshCommand remote: remote, command: "./variable.sh ${USERNAME} ${PASSWORD}"
             //sshScript remote: remote, script: 'variable.sh'
             }
             
