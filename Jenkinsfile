@@ -2,8 +2,8 @@ def remote = [:]
 remote.name = "artifactory-server"
 remote.host = "64.225.51.239"
 remote.allowAnyHosts = true
-def DIR = "gaston"
-def VERSION = "1.7.15"
+//def DIR = "gaston"
+//def VERSION = "1.7.15"
 node {
     stage ('checkout') {
         git branch: 'main',
@@ -14,8 +14,8 @@ node {
         remote.identityFile = identity
         stage("SSH Steps Rocks!") {
             environment {
-                def DIR = "gaston"
-                def VERSION = "1.7.15"
+                DIR = "gaston"
+                VERSION = "1.7.15"
             }
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
