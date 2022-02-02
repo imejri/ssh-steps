@@ -20,7 +20,8 @@ node {
             //writeFile file: 'abc.sh', text: 'ls'
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
-            sshScript remote: remote, script: 'variable.sh'
+            sshPut remote: remote, from: 'variable.sh', into: '.'
+            //sshScript remote: remote, script: 'variable.sh'
             
         }
     }
