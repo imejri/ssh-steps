@@ -21,6 +21,7 @@ node {
             //sshCommand remote: remote, command: "mkdir ${DIR}, failOnError:false"
             //sshCommand remote: remote, command: "mkdir ${DIR}-${VERSION}"
             sshPut remote: remote, from: 'variable.sh', into: '.'
+            sshCommand remote: remote, command: 'chmod +x variable.sh'
             //sshScript remote: remote, script: 'variable.sh'
             
         }
